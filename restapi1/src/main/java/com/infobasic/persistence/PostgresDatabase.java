@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 final public class PostgresDatabase {
     public Connection connect_to_db(String dbname,String user,String pass){
@@ -29,7 +28,7 @@ final public class PostgresDatabase {
         Statement statement;
         ResultSet rs=null;
         try {
-            String query=String.format("select * from %s",table_name);
+            String query=String.format("select id from %s",table_name);
             statement=conn.createStatement();
             rs=statement.executeQuery(query);
 
@@ -39,18 +38,6 @@ final public class PostgresDatabase {
         }
         return rs;
     }
-
-    /*public void insert_row(Connection conn,String table_name, ArrayList values){
-        Statement statement;
-        try {
-            String query=String.format("insert into %s values('%s','%s');",table_name,name,address);
-            statement=conn.createStatement();
-            statement.executeUpdate(query);
-            System.out.println("Row Inserted");
-        }catch (Exception e){
-            System.out.println(e);
-        }
-    }*/
 
     public ResultSet search_by_id(Connection conn, String table_name,int id){
         Statement statement;
@@ -63,6 +50,18 @@ final public class PostgresDatabase {
             System.out.println(e);
         }
         return rs;
+    }
+
+    public void insert_row(Connection conn,String table_name,String name, String address){
+        Statement statement;
+        try {
+            String query=String.format("insert into %s(name,address) values('%s','%s');",table_name,name,address);
+            statement=conn.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Row Inserted");
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 
 }

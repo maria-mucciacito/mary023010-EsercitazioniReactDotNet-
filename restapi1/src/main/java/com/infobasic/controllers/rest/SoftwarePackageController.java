@@ -1,5 +1,6 @@
 package com.infobasic.controllers.rest;
-import static spark.Spark.*;
+import static spark.Spark.get;
+
 import com.google.gson.Gson;
 import com.infobasic.services.SoftwarePackageService;
 
@@ -28,5 +29,14 @@ public class SoftwarePackageController {
             return softwareService.getSoftwarePackageById(idSearch);
         }, gson::toJson);
     }
+
+    /*public void insertSoftwarePackage(SoftwarePackageService softwareService){
+        post("/softwarepackages/create", (req, res) -> {
+            res.type("application/json");
+            SoftwarePackage softwareFromRequest = new Gson().fromJson(req.body(), SoftwarePackage.class);
+            softwareService.insertSoftwarePackage(softwareFromRequest);
+            return softwareService.getAllSoftwarePackage();
+        }, gson::toJson);
+    }*/
     
 }

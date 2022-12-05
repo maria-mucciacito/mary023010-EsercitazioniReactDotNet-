@@ -1,6 +1,4 @@
 package com.infobasic.services;
-import com.infobasic.persistence.PostgresDatabase;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.infobasic.models.SoftwarePackage;
+import com.infobasic.persistence.PostgresDatabase;
 
 public class SoftwarePackageService {
     PostgresDatabase database;
