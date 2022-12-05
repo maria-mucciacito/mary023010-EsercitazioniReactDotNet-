@@ -1,0 +1,10 @@
+body {
+  min-height: 100vh;
+  display: grid;
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
