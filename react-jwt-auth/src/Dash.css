@@ -1,0 +1,32 @@
+:root{
+    --offcanvas-width: 270px;
+    --topNavbarHeight:56px;
+}
+.sidebar-nav{
+    width: var(--offcanvas-width);
+}
+.text-white {
+    color: #fff!important;
+}
+
+@media (min-width: 992px) {
+    body{
+        overflow: auto !important;
+    }
+    .offcanvas-backdrop::before{
+        display: none;
+    }
+    .sidebar-nav{
+        transform: none;
+        visibility: visible !important;
+        top: var(--topNavbarHeight);
+        height: calc(100% - var(--topNavbarHeight));
+    }
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+ul li a:hover{
+    cursor: pointer;
+}

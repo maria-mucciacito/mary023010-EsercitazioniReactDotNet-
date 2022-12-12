@@ -22,7 +22,7 @@ public class SoftwarePackageService {
 
     public List<SoftwarePackage> getAllSoftwarePackage() {
         this.software = new ArrayList<SoftwarePackage>();
-        ResultSet rs = database.read_data(this.conn, "software_package");
+        ResultSet rs = database.read_data(this.conn, "public.software_package");
         try {
             while(rs.next()){
                 int id = rs.getInt("id");
@@ -40,9 +40,9 @@ public class SoftwarePackageService {
         
     }
 
-    public List<SoftwarePackage> getSoftwarePackageById(int idSearch){
-        this.software = new ArrayList<SoftwarePackage>();
-        ResultSet rs = database.search_by_id(this.conn, "software_package", idSearch);
+    public SoftwarePackage getSoftwarePackageById(int idSearch){
+        ResultSet rs = database.search_by_id(this.conn, "public.software_package", idSearch);
+        SoftwarePackage s = null;
         try {
             while (rs.next()){
                 int id = rs.getInt("id");
@@ -50,13 +50,12 @@ public class SoftwarePackageService {
                 String description = rs.getString("description");
                 String category = rs.getString("category");
                 String product_code = rs.getString("product_code");
-                SoftwarePackage s = new SoftwarePackage(id, name, description, category, product_code);
-                software.add(s);
+                s = new SoftwarePackage(id, name, description, category, product_code);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return software;
+        return s;
     }
 
 }

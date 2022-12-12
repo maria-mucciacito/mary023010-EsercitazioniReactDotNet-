@@ -3,7 +3,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form, Container } from "react-bootstrap";
 import React from "react";
-import { Login } from "./Login";
+import Login from "./Login";
 import { LoginGrafica } from "./LoginGrafica";
 import {
   MDBBtn,
@@ -15,15 +15,18 @@ import {
 } from "mdb-react-ui-kit";
 import {Routes,Route} from 'react-router-dom';
 import { Dashboard } from "./Dashboard";
+import { Dash } from "./Dash";
 
 
 function App() {
   return (
     <>
-    <Routes>
-      <Route path="/dash" element={<Dashboard />}></Route>
-      <Route path="/login" element={<LoginGrafica />}></Route>
-    </Routes>
+      <Routes>
+        <Route path="/dash" element={<Dashboard />}></Route>
+        <Route path="/login" element={<LoginGrafica />}></Route>
+        <Route path="/log" element={<Login/>}></Route>
+        <Route path="/dashboard" element={<Dash />}></Route>
+      </Routes>
     </>
     
   );

@@ -28,6 +28,7 @@ public class App
         UserService uservice = new UserService();
         UserController cuser = new UserController();
         cuser.getAllUser(uservice);
+        cuser.controlUser(uservice);
 
         
 

@@ -28,7 +28,7 @@ final public class PostgresDatabase {
         Statement statement;
         ResultSet rs=null;
         try {
-            String query=String.format("select id from %s",table_name);
+            String query=String.format("select * from %s",table_name);
             statement=conn.createStatement();
             rs=statement.executeQuery(query);
 
@@ -62,6 +62,19 @@ final public class PostgresDatabase {
         }catch (Exception e){
             System.out.println(e);
         }
+    }
+
+    public ResultSet control_user_existing(Connection conn, String table_name, String username, String password){
+        Statement statement;
+        ResultSet rs=null;
+        try {
+            String query=String.format("select id from %s where username= %s AND password= %s",table_name,username,password);
+            statement=conn.createStatement();
+            rs=statement.executeQuery(query);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return rs;
     }
 
 }
