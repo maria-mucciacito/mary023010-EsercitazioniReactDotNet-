@@ -28,7 +28,14 @@ public class SoftwarePackageService {
         softwarePackageDaoImpl.deleteSoftwareById(id);
     }
 
-    public void updateSoftware(SoftwarePackage softwarePackage){
-        softwarePackageDaoImpl.updateSoftware(softwarePackage);
+    public void updateSoftware(SoftwarePackage newSoftwarePackage, int id){
+        SoftwarePackage oldSoftwarePackage = softwarePackageDaoImpl.getSoftwareByID(id);
+        if(oldSoftwarePackage.getId() == newSoftwarePackage.getId()){
+            oldSoftwarePackage.setProduct_code(newSoftwarePackage.getProduct_code());
+            oldSoftwarePackage.setDescription(newSoftwarePackage.getDescription());
+            oldSoftwarePackage.setName(newSoftwarePackage.getName());
+            oldSoftwarePackage.setCategory(newSoftwarePackage.getCategory());
+        }
+        softwarePackageDaoImpl.updateSoftware(oldSoftwarePackage);
     }
 }

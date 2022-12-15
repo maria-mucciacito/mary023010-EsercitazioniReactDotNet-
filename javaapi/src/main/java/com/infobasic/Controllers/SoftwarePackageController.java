@@ -47,8 +47,12 @@ public class SoftwarePackageController {
 
         //update software by id
         put("/softwarepackage/:id", (req,res)->{
-            
-        });
+            res.type("application/json");
+            int id = Integer.parseInt(req.params("id")); 
+            SoftwarePackage softwarePackageFromRequest = new Gson().fromJson(req.body(), SoftwarePackage.class);
+            softwarePackageService.updateSoftware(softwarePackageFromRequest, id);
+            return softwarePackageFromRequest;
+        },gson::toJson);
     }
     
 }

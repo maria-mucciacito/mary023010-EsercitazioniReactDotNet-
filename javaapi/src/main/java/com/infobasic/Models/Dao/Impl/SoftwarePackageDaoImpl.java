@@ -102,9 +102,8 @@ public class SoftwarePackageDaoImpl implements SoftwarePackageDao {
         Connection connection = ConnectionManager.getConnetion();
         Statement statement;
         try {
-            String query = String.format("UPDATE public.software_package SET product_code=?, description=?, name=?, category=? WHERE id=%s;'",
-                    softwarePackage.getProduct_code(), softwarePackage.getDescription(), softwarePackage.getName(),
-                    softwarePackage.getCategory());
+            String query = String.format("update public.software_package set product_code='%s', description='%s', name='%s', category='%s' where id='%s'", softwarePackage.getProduct_code(), softwarePackage.getDescription(), softwarePackage.getName(),softwarePackage.getCategory(),softwarePackage.getId());
+            System.out.println(query);
             statement = connection.createStatement();
             statement.executeUpdate(query);
 
