@@ -15,5 +15,17 @@ public class DashboardService {
     public HashMap<String, Integer> leadsBySource(){
         return dashboardDaoImpl.leadsBySource();
     }
+
+    public HashMap<String, Integer> dealsByState(){
+        return dashboardDaoImpl.dealsByState();
+    }
+
+    public HashMap<String, Integer> tasksByState(){
+        return dashboardDaoImpl.tasksByState();
+    }
+
+    public HashMap<String, Integer> tasksForMonth(){
+        return dashboardDaoImpl.tasksForMonth();
+    }
     
 }
